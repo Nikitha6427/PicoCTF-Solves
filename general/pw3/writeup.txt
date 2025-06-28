@@ -1,0 +1,1 @@
+cat all files. use bvi command on hashbin file. encrypt all passwored in py file using md5 encrypter. use the text in hashbin file and compare with then md5 hashes and find the flag

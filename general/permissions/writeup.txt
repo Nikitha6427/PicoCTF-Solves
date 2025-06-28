@@ -1,0 +1,3 @@
+i
+write :!/bin/bash in vi test file in sudo mode
+

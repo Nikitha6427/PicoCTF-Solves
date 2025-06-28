@@ -1,0 +1,2 @@
+cat anthem.flag.txt | grep -i pico
+

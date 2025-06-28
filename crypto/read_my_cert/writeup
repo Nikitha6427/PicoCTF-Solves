@@ -1,0 +1,1 @@
+cat the file found nothing so i found a new tool today for crypto openssl req -in readmycert.csr -noout -text this analyses the file and gives us a lot of info about the file and in the output we got the flag

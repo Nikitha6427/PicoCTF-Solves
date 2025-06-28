@@ -1,0 +1,1 @@
+use wireshark and avoid the distracting flags. instead apply filter dns  && ip.dst==18.217.1.57 and analyze the packets copy the packets as ASCII text and remove the unessary parts and you will get a base64 string cGljb0NURntkbnNfM3hmMWxfZnR3X2RlYWRiZWVmfQ== decode it and then u will get picoCTF{dns_3xf1l_ftw_deadbeef} here we go never trust fake flags

@@ -1,0 +1,1 @@
+we have nothing found in strings so we use wireshark and find a lot of udp packets and few more packets. now we can usally find imp iinfo in UDP or TCP so we go through the udp packets and sind something call pico alone. so we right click a ramdom udp packet follow UDP streams and brute force it. which give us this flag picoCTF{StaT31355_636f6e6e}
