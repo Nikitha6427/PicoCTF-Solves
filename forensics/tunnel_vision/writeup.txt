@@ -1,0 +1,30 @@
+first we strings the file for any intresting info. 
+strings tunn3l_v1s10n.bmp | grep -i pico 
+we get 
+IR6\hEepIco
+
+seems like our required data is scattered into pieces
+
+then we try to find the file type using
+
+xxd -g 1 tunn3l_v1s10n | head
+
+we get 
+
+00000000: 42 4d 8e 26 2c 00 00 00 00 00 ba d0 00 00 ba d0  BM.&,...........
+00000010: 00 00 6e 04 00 00 32 01 00 00 01 00 18 00 00 00  ..n...2.........
+00000020: 00 00 58 26 2c 00 25 16 00 00 25 16 00 00 00 00  ..X&,.%...%.....
+00000030: 00 00 00 00 00 00 23 1a 17 27 1e 1b 29 20 1d 2a  ......#..'..) .*
+00000040: 21 1e 26 1d 1a 31 28 25 35 2c 29 33 2a 27 38 2f  !.&..1(%5,)3*'8/
+
+comparing with the file signatures we come to know that it is a bmp file. uploadinfg the file in photoped we do not get any info 
+
+but we can see that the images width is quite less than the  height . so we convert the iomage to png and cheack with exif tool and we see the hieght is 306. using hex editor we convert the value to 1000. and we finally got the flag. 
+
+hex(306)
+'0x132'
+>>> hex(1000)
+'0x3e8'
+
+32 01 is changed to E8 30
+picoCTF{qu1t3_a_v13w_2020}
