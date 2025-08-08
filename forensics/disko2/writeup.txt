@@ -1,0 +1,56 @@
+Can you find the flag in this disk image? The right one is Linux! One wrong step and its all gone!
+Download the disk image here
+
+Hint
+
+How can you extract/isolate a partition?.
+
+from the queestion we know that we are given a disk image. 
+and we need to focus on the linux partition. 
+
+ok let's first download the file.
+
+https://artifacts.picoctf.net/c/541/disko-2.dd.gz
+
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/disko2$ file disko-2.dd.gz 
+disko-2.dd.gz: gzip compressed data, was "disko-2.dd", last modified: Fri Jun 13 18:16:47 2025, from Unix, original size modulo 2^32 104857600
+
+we see it's a gzip compressed data. 
+
+but before decompressing it let me do strings and grep it.
+
+ok it was mostly random letters and we got nothing. 
+
+gzip -d disko-2.dd.gz 
+
+ mmls disko-2.dd 
+DOS Partition Table
+Offset Sector: 0
+Units are in 512-byte sectors
+
+      Slot      Start        End          Length       Description
+000:  Meta      0000000000   0000000000   0000000001   Primary Table (#0)
+001:  -------   0000000000   0000002047   0000002048   Unallocated
+002:  000:000   0000002048   0000053247   0000051200   Linux (0x83)
+003:  000:001   0000053248   0000118783   0000065536   Win95 FAT32 (0x0b)
+004:  -------   0000118784   0000204799   0000086016   Unallocated
+
+
+after unzipping it when we see the output of mmls command we can see a linux partition just like the mentioned.
+
+so let us isolate it into a img just like the hint provided.
+
+for that we use the command:
+
+ dd if=disko-2.dd of=LinuxPartition.img bs=512 skip=2048 count=51200
+
+
+from this we get our linux partition file seperately.
+
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/disko2$ strings LinuxPartition.img | grep -i picoCTF
+picoCTF{4_P4Rt_1t_i5_055dd175}
+
+
+and there we go!
+
+happy hacking.

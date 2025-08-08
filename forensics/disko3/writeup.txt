@@ -1,0 +1,51 @@
+Can you find the flag in this disk image? This time, its not as plain as you think it is!
+Download the disk image here.
+
+Hint:
+
+How will you search and extract files in a partition?
+
+lets decompress it
+
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/disko3$ gzip -d disko-3.dd.gz 
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/disko3$ file disko-3.dd 
+disko-3.dd: DOS/MBR boot sector, code offset 0x58+2, OEM-ID "mkfs.fat", Media descriptor 0xf8, sectors/track 32, heads 8, sectors 204800 (volumes > 32 MB), FAT (32 bit), sectors/FAT 1576, serial number 0x49838d0b, unlabeled
+
+
+to extract the file from the disk image we use the command
+
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/disko3$ 7z x disko-3.dd
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs AMD Ryzen 5 7520U with Radeon Graphics          (8A0F00),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 104857600 bytes (100 MiB)
+
+Extracting archive: disko-3.dd
+--       
+Path = disko-3.dd
+Type = FAT
+Physical Size = 104857600
+File System = FAT32
+Cluster Size = 512
+Free Space = 704000
+Headers Size = 1646592
+Sector Size = 512
+ID = 1233358091
+
+Everything is Ok                                                        
+
+Folders: 13
+Files: 84
+Size:       102490980
+Compressed: 104857600
+
+when we do ls we can see a number of files including file.gz
+
+so we decompress it and cat it
+
+cat flag 
+Here is your flag
+picoCTF{n3v3r_z1p_2_h1d3_26d4f233}
+
