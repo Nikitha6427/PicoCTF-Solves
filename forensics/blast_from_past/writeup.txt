@@ -1,0 +1,58 @@
+exiftool -v3 original.jpg
+
+use ghex and change one by one
+
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/blast_from_past$ nc -w 2 mimas.picoctf.net 61505 < original_modified.jpg
+niki@fedora:~/Hack/PicoCTF-Solves/forensics/blast_from_past$ nc mimas.picoctf.net 63428
+MD5 of your picture:
+f929ec85d2e2a0da1432ad33245770dd  test.out
+
+Checking tag 1/7
+Looking at IFD0: ModifyDate
+Looking for '1970:01:01 00:00:00'
+Found: 1970:01:01 00:00:00
+Great job, you got that one!
+
+Checking tag 2/7
+Looking at ExifIFD: DateTimeOriginal
+Looking for '1970:01:01 00:00:00'
+Found: 1970:01:01 00:00:00
+Great job, you got that one!
+
+Checking tag 3/7
+Looking at ExifIFD: CreateDate
+Looking for '1970:01:01 00:00:00'
+Found: 1970:01:01 00:00:00
+Great job, you got that one!
+
+Checking tag 4/7
+Looking at Composite: SubSecCreateDate
+Looking for '1970:01:01 00:00:00.001'
+Found: 1970:01:01 00:00:00.001
+Great job, you got that one!
+
+Checking tag 5/7
+Looking at Composite: SubSecDateTimeOriginal
+Looking for '1970:01:01 00:00:00.001'
+Found: 1970:01:01 00:00:00.001
+Great job, you got that one!
+
+Checking tag 6/7
+Looking at Composite: SubSecModifyDate
+Looking for '1970:01:01 00:00:00.001'
+Found: 1970:01:01 00:00:00.001
+Great job, you got that one!
+
+Checking tag 7/7
+Timezones do not have to match, as long as it's the equivalent time.
+Looking at Samsung: TimeStamp
+Looking for '1970:01:01 00:00:00.001+00:00'
+Found: 1970:01:01 00:00:00.001+00:00
+Great job, you got that one!
+
+//since one millisecond past the midnight 0000000000001
+
+You did it!
+picoCTF{71m3_7r4v311ng_p1c7ur3_ed953b57}
+
+
